@@ -1,13 +1,39 @@
-/*
-// --------- [Não mexer] Responsaveis por renderizar no html
-criarElementoHTML(): HTMLLIElement {
-  const li = document.createElement("li");
-  li.innerHTML = `<span>${this.titulo}</span> (Autor: ${this.autor})`;
-  li.classList.add("livro-item");
-  if (!this.disponivel) {
-    li.classList.add("emprestado");
+class Livro {
+  /* O comum é a versão abreviada, porque quase sempre só repassamos.
+Somente em casos de transformação que fazemos da forma mais verbosa ( de forma explicita )*/
+  constructor(
+    public id: number,
+    public titulo: string,
+    public autor: string,
+    public estaDisponivel: boolean = true //default
+  ) {}
+
+  emprestarLivro(): void {
+    if (this.estaDisponivel) {
+      this.estaDisponivel = false;
+    } else {
+      alert(`O livro "${this.titulo}" não está disponível para empréstimo`)
+    };
+  };
+
+  // devolverLivro() {
+  //   // to-do
+  // }
+
+  // --------- [Não mexer] Responsaveis por renderizar no html
+  criarElementoHTML(): HTMLLIElement {
+    const li = document.createElement("li");
+    li.innerHTML = `<span>${this.titulo}</span> (Autor: ${this.autor})`;
+    li.classList.add("livro-item");
+    if (!this.estaDisponivel) {
+      li.classList.add("emprestado");
+    }
+    return li;
   }
-  return li;
+  // --------- [Não mexer] Responsaveis por renderizar no html
+
+
 }
-// --------- [Não mexer] Responsaveis por renderizar no html
-*/
+
+
+
