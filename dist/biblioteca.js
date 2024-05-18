@@ -22,7 +22,7 @@ class Biblioteca {
     }
     realizarEmprestimo(livro, aluno, senha) {
         if (!aluno.matricula) {
-            alert("Matricula inexistente");
+            alert("Matrícula inexistente!");
             return false;
         }
         if (!senha || senha !== aluno.senha) {
@@ -64,7 +64,7 @@ class Biblioteca {
         this.emprestimosAtivosElement.innerHTML = "";
         this.emprestimos.forEach((emprestimo) => {
             const li = document.createElement("li");
-            li.textContent = `Livro: ${emprestimo.livro.titulo}, Usuário: ${emprestimo.aluno.nome}, Data de Devolução: ${emprestimo.dataDevolucao.toDateString()}`;
+            li.textContent = `Livro: ${emprestimo.livro.titulo}, Aluno: ${emprestimo.aluno.nome}, Data de Devolução: ${emprestimo.dataDevolucao.toDateString()}`;
             this.emprestimosAtivosElement.appendChild(li);
         });
     }

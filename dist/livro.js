@@ -14,8 +14,6 @@ class Livro {
             alert(`O livro "${this.titulo}" não está disponível para empréstimo.`);
         }
     }
-    devolverLivro() {
-    }
     // --------- [Não mexer] Responsaveis por renderizar no html
     criarElementoHTML() {
         const li = document.createElement("li");

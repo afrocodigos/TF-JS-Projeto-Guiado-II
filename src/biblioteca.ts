@@ -5,7 +5,8 @@ class Biblioteca{
 
   constructor(
    public livrosDisponiveisElement: HTMLUListElement,
-   public emprestimosAtivosElement: HTMLUListElement) {}
+   public emprestimosAtivosElement: HTMLUListElement
+  ) {}
   
   adicionarLivro(livro: Livro): void{
     this.livros.push(livro)
@@ -27,7 +28,7 @@ class Biblioteca{
 
   realizarEmprestimo(livro: Livro, aluno: Aluno, senha: string){
   if(!aluno.matricula){
-    alert("Matricula inexistente")
+    alert("Matrícula inexistente!")
     return false
   }
   if(!senha || senha !== aluno.senha){
@@ -84,7 +85,7 @@ class Biblioteca{
     this.emprestimos.forEach((emprestimo) => {
       const li = document.createElement("li");
 
-      li.textContent = `Livro: ${emprestimo.livro.titulo}, Usuário: ${
+      li.textContent = `Livro: ${emprestimo.livro.titulo}, Aluno: ${
         emprestimo.aluno.nome
       }, Data de Devolução: ${emprestimo.dataDevolucao.toDateString()}`;
       this.emprestimosAtivosElement.appendChild(li);

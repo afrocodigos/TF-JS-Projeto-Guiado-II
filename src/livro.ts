@@ -3,20 +3,17 @@ class Livro {
     public id: number,
     public titulo: string,
     public autor: string,
-    public estaDisponivel: boolean = true) {}
+    public estaDisponivel: boolean = true
+  ) {}
 
-  emprestarLivro(){
-    if(this.estaDisponivel){
+  emprestarLivro(): void {
+    if(this.estaDisponivel) {
       this.estaDisponivel = false
-    }else {
+    } else {
       alert(`O livro "${this.titulo}" não está disponível para empréstimo.`)
     }
   }
-
-  devolverLivro(){
-
-  }
-
+  
 // --------- [Não mexer] Responsaveis por renderizar no html
   criarElementoHTML(): HTMLLIElement {
     const li = document.createElement("li");

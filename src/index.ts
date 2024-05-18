@@ -55,6 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
       {}) as Livro;
     const aluno = (biblioteca.encontrarAluno(matricula) || {}) as Aluno;
 
-    // biblioteca.realizarEmprestimo(livro, aluno, senha);
+    biblioteca.realizarEmprestimo(livro, aluno, senha);
   });
 });
