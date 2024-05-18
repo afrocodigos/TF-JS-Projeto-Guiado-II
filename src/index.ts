@@ -11,16 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
     emprestimosAtivosElement
   );
 
-  const livro1 = new Livro(1, "A Revolução dos Bichos", "George Orwell");
-  const livro2 = new Livro(2, "O Senhor dos Anéis", "J.R.R. Tolkien");
-  const livro3 = new Livro(3, "Harry Potter", "J.K. Rowling");
-  const livro4 = new Livro(4, "1984", "George Orwell");
-  const livro5 = new Livro(5, "Dom Quixote", "Miguel de Cervantes");
-  const livro6 = new Livro(6, "Orgulho e Preconceito", "Jane Austen");
-  const livro7 = new Livro(7, "Crime e Castigo", "Fyodor Dostoevsky");
-  const livro8 = new Livro(8, "O Pequeno Príncipe", "Antoine de Saint-Exupéry");
-  const livro9 = new Livro(9, "Cem Anos de Solidão", "Gabriel García Márquez");
-
+  const livro1 = new Livro(1, "Never Finished", "David Goggins", true);
+  const livro2 = new Livro(2, "Sem Esforço", "Greg Mckeown", true);
+  const livro3 = new Livro(3, "Os Quatro Compromissos", "Don Miguel Ruiz", true);
+  const livro4 = new Livro(4, "O Poder do Agora", "Eckhart Tolle", true);
+  const livro5 = new Livro(5, 'O Alquimista', 'Paulo Coelho', true);
+  const livro6 = new Livro(6, 'Brida', 'Paulo Coelho', true);
+  const livro7 = new Livro(7, 'A quietude é a chave', 'Ryan Holiday', true);
+  
   biblioteca.adicionarLivro(livro1);
   biblioteca.adicionarLivro(livro2);
   biblioteca.adicionarLivro(livro3);
@@ -28,14 +26,15 @@ document.addEventListener("DOMContentLoaded", () => {
   biblioteca.adicionarLivro(livro5);
   biblioteca.adicionarLivro(livro6);
   biblioteca.adicionarLivro(livro7);
-  biblioteca.adicionarLivro(livro8);
-  biblioteca.adicionarLivro(livro9);
+ 
 
-  const aluno1 = new Aluno("Lisandra", "lisandra@example.com", "A28", "123");
-  const aluno2 = new Aluno("Maria", "maria@example.com", "A29", "123");
+  const aluno1 = new Aluno("Gabriel", "mauriciorjgabriel@gmail.com", "1234", "001");
+  const aluno2 = new Aluno("Bruna", "bruna.nascimento@gmail.com", "1234", "002");
+  const aluno3 = new Aluno("Andrea","andreamattos@gmail.com", "1234", "003");
 
   biblioteca.adicionarAluno(aluno1);
   biblioteca.adicionarAluno(aluno2);
+  biblioteca.adicionarAluno(aluno3);
 
   const alugarLivroForm = document.getElementById(
     "alugarLivroForm"
