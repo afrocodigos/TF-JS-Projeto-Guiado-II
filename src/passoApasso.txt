@@ -1,0 +1,19 @@
+seguindo o diagrama primeiro vou criar a classe usuario
+lembrando que pra criar a classe tradicional basta por os atributos e depois o construtor
+
+depois basta criar a classe aluno e extender a classe usuario
+
+depois criar a classe Livro que vai possuir 2 metodos
+
+deopis e necessario criar a interface que vai receber o nome emprestimo
+os atributos desse emprestimo vai ser livro que vai pegar da classe livro 
+e vai ter o atributo aluno que vai pegar da classe aluno e vai ter o atributos
+do tipo Date sendo eles dataEmprestimo e dataDevolucao
+
+agora iremos mexer na classe principal de nome Biblioteca
+nessa classe como atributo irei ter uma listta de livros que vai receber a classe livro depois de 
+criar os atributos e hora de criar o construtor
+nesse caso ele vai ser diferente pois vai ser necessario apenas declarar as Id do HTML que seram usados
+depois e hora de fazer os metodos que seram usados
+
+depois crio o metodo empresta livro na classe livro
