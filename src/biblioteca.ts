@@ -1,17 +1,12 @@
 class Biblioteca {
   livros: Livro[] = [];
-  // livros: Array<Livro> = [];
   alunos: Aluno[] = [];
-  // paasaremos livro e alunos apenas pelos metodos e não no construtor
   emprestimos: Emprestimo[] = [];
 
   constructor(
-    public livrosDisponiveisElement: HTMLUListElement, // pegando element pelo id no index.ts
-    public emprestimosAtivosElement: HTMLUListElement // pegando element pelo id no index.ts
+    public livrosDisponiveisElement: HTMLUListElement,
+    public emprestimosAtivosElement: HTMLUListElement
   ) {}
-
-
-  // --------- [Não mexer] Responsaveis por renderizar no html
 
   private renderizarLivrosDisponiveis(): void {
     this.livrosDisponiveisElement.innerHTML = "";
@@ -26,8 +21,8 @@ class Biblioteca {
 
       // Preencher select
       const option = document.createElement("option");
-      option.value = String(livro.id); // Define o valor da opção como o ID do livro
-      option.textContent = livro.titulo; // Define o texto da opção como o título do livro
+      option.value = String(livro.id);
+      option.textContent = livro.titulo;
       selectLivro.appendChild(option);
     });
     };
@@ -45,8 +40,6 @@ class Biblioteca {
       });
     };
 
-    // --------- [Não mexer] Responsaveis por renderizar no html
-
     adicionarLivro(livro : Livro): void {
       this.livros.push(livro);
       this.renderizarLivrosDisponiveis()
@@ -54,8 +47,6 @@ class Biblioteca {
     }
 
     encontrarLivro(id: number) : Livro {
-      // const livroEncontrado = this.livros.find( livro => livro.id === id) || {} as Livro
-      // pq pode ser undefined
       const livroEncontrado = this.livros.find( livro => livro.id === id) as Livro
       return livroEncontrado;
     }

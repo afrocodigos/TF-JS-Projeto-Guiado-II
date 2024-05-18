@@ -1,6 +1,4 @@
 class Livro {
-  /* O comum é a versão abreviada, porque quase sempre só repassamos.
-Somente em casos de transformação que fazemos da forma mais verbosa ( de forma explicita )*/
   constructor(
     public id: number,
     public titulo: string,
@@ -20,7 +18,7 @@ Somente em casos de transformação que fazemos da forma mais verbosa ( de forma
   //   // to-do
   // }
 
-  // --------- [Não mexer] Responsaveis por renderizar no html
+
   criarElementoHTML(): HTMLLIElement {
     const li = document.createElement("li");
     li.innerHTML = `<span>${this.titulo}</span> (Autor: ${this.autor})`;
@@ -30,8 +28,6 @@ Somente em casos de transformação que fazemos da forma mais verbosa ( de forma
     }
     return li;
   }
-  // --------- [Não mexer] Responsaveis por renderizar no html
-
 
 }
 
