@@ -4,6 +4,7 @@ class Livro {
   titulo: string;
   autor: string;
   estaDisponivel: boolean;
+
   constructor(
     id: number,
     titulo: string,
@@ -24,7 +25,18 @@ class Livro {
       );
     }
   }
-
+  atrassados(): Emprestimo | any {
+    this.emprestimos.map((e) => {
+      e.dataEntrega,
+        e.dataDevolucao,
+        e.aluno.matricula,
+        e.aluno.nome,
+        e.livro.id;
+      if (e.dataEntrega > e.dataDevolucao) {
+        e.aluno.matricula, e.aluno.nome, e.livro.id;
+      }
+    });
+  }
   // --------- [Não mexer] Responsaveis por renderizar no html
   criarElementoHTML(): HTMLLIElement {
     const li = document.createElement("li");
@@ -32,6 +44,15 @@ class Livro {
     li.classList.add("livro-item");
     if (!this.estaDisponivel) {
       li.classList.add("emprestado");
+    }
+    return li;
+  }
+  criarElementoLivroTrassado(): HTMLElement {
+    const li = document.createElement("li");
+    li.innerHTML = `<span>${this.titulo}</span>(Autor: ${this.autor})`;
+    li.classList.add("livro-item");
+    if (this.atrassados()) {
+      li.classList.add("Atrassado");
     }
     return li;
   }

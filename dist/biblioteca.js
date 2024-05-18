@@ -1,8 +1,9 @@
 "use strict";
 class Biblioteca {
-    constructor(livrosDisponiveisElement, emprestimosAtivosElement) {
+    constructor(livrosDisponiveisElement, emprestimosAtivosElement, livrosDevolvidosElement) {
         this.livrosDisponiveisElement = livrosDisponiveisElement;
         this.emprestimosAtivosElement = emprestimosAtivosElement;
+        this.livrosDevolvidosElement = livrosDevolvidosElement;
         this.livros = [];
         this.alunos = [];
         this.emprestimos = [];
@@ -22,6 +23,11 @@ class Biblioteca {
             option.textContent = livro.titulo; // Define o texto da opção como o título do livro
             selectLivro.appendChild(option);
         });
+    }
+    emprestimosDevolvidos() {
+        this.livrosDevolvidosElement.innerHTML = "";
+        const devolvidos = this.livros.filter((livro) => livro.atrassados);
+        devolvidos.forEach((livro) => livro.atrassados);
     }
     renderizarEmprestimosAtivos() {
         this.emprestimosAtivosElement.innerHTML = "";
@@ -47,6 +53,12 @@ class Biblioteca {
         const encontrarAluno = this.alunos.find((aluno) => aluno.matricula === matricula);
         return encontrarAluno;
     }
+    emprestimosAtrassados() {
+        const atrassados = this.emprestimos.map((emprestimo) => {
+            if (emprestimo.dataEntrega > emprestimo.dataDevolucao)
+                return atrassados;
+        });
+    }
     realizarEmprestimo(livro, aluno, senha) {
         if (!aluno.matricula) {
             alert("Digite uma mátricula válida");
@@ -62,19 +74,38 @@ class Biblioteca {
         livro.emprestarLivro();
         const dataEmprestimo = new Date();
         const dataDevolucao = new Date();
+        const dataEntrega = new Date();
         dataDevolucao.setDate(dataDevolucao.getDate() + 7);
         const emprestimo = {
             livro,
             aluno,
             dataEmprestimo,
             dataDevolucao,
+            dataEntrega,
         };
-        if (dataDevolucao > emprestimo.dataDevolucao) {
-            alert("A devolução está atrasada!!");
-        }
         this.emprestimos.push(emprestimo);
         this.renderizarEmprestimosAtivos();
         this.renderizarLivrosDisponiveis();
         return true;
+    }
+    realizarDelucao(livro, aluno) {
+        const dataEmprestimo = new Date();
+        const dataDevolucao = new Date();
+        const dataEntrega = new Date();
+        dataDevolucao.setDate(dataDevolucao.getDate() + 7);
+        const devolucao = {
+            livro,
+            aluno,
+            dataDevolucao,
+            dataEmprestimo,
+            dataEntrega,
+        };
+        this.emprestimos.push(devolucao);
+        this.emprestimosDevolvidos();
+        return true;
+    }
+    adicionarDevolucao(livro) {
+        this.livros.push(livro);
+        this.emprestimosAtrassados();
     }
 }

@@ -5,10 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const emprestimosAtivosElement = document.getElementById(
     "emprestimosAtivos"
   ) as HTMLUListElement;
-
+  const emprestimoAtrasssados = document.getElementById(
+    "emprestimosAtrassados"
+  ) as HTMLUListElement;
   const biblioteca = new Biblioteca(
     livrosDisponiveisElement,
-    emprestimosAtivosElement
+    emprestimosAtivosElement,
+    emprestimoAtrasssados
   );
 
   const livro1 = new Livro(1, "A Revolução dos Bichos", "George Orwell");
@@ -64,7 +67,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const livro = (biblioteca.encontrarLivro(idLivroSelecionado) ||
       {}) as Livro;
     const aluno = (biblioteca.encontrarAluno(matricula) || {}) as Aluno;
+    const atrassados = (biblioteca.emprestimosAtrassados() || {}) as
+      | Emprestimo
+      | any;
 
     biblioteca.realizarEmprestimo(livro, aluno, senha);
+    biblioteca.realizarDelucao(livro, aluno);
   });
 });

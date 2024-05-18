@@ -4,7 +4,8 @@ class Biblioteca {
   emprestimos: Array<Emprestimo> = [];
   constructor(
     public livrosDisponiveisElement: HTMLUListElement,
-    public emprestimosAtivosElement: HTMLUListElement
+    public emprestimosAtivosElement: HTMLUListElement,
+    public livrosDevolvidosElement: HTMLUListElement
   ) {}
 
   // --------- [Não mexer] Responsaveis por renderizar no html
@@ -27,7 +28,11 @@ class Biblioteca {
       selectLivro.appendChild(option);
     });
   }
-
+  private emprestimosDevolvidos(): void {
+    this.livrosDevolvidosElement.innerHTML = "";
+    const devolvidos = this.livros.filter((livro) => livro.atrassados);
+    devolvidos.forEach((livro) => livro.atrassados);
+  }
   private renderizarEmprestimosAtivos(): void {
     this.emprestimosAtivosElement.innerHTML = "";
 
@@ -62,6 +67,11 @@ class Biblioteca {
     );
     return encontrarAluno;
   }
+  emprestimosAtrassados(): Emprestimo | any {
+    const atrassados: Emprestimo | any = this.emprestimos.map((emprestimo) => {
+      if (emprestimo.dataEntrega > emprestimo.dataDevolucao) return atrassados;
+    });
+  }
   realizarEmprestimo(
     livro: Livro,
     aluno: Aluno,
@@ -81,8 +91,10 @@ class Biblioteca {
       );
     }
     livro.emprestarLivro();
+
     const dataEmprestimo = new Date();
     const dataDevolucao = new Date();
+    const dataEntrega = new Date();
     dataDevolucao.setDate(dataDevolucao.getDate() + 7);
 
     const emprestimo: Emprestimo = {
@@ -90,13 +102,34 @@ class Biblioteca {
       aluno,
       dataEmprestimo,
       dataDevolucao,
+      dataEntrega,
     };
-    if (dataDevolucao > emprestimo.dataDevolucao) {
-      alert("A devolução está atrasada!!");
-    }
+
     this.emprestimos.push(emprestimo);
     this.renderizarEmprestimosAtivos();
     this.renderizarLivrosDisponiveis();
     return true;
   }
+  realizarDelucao(livro: Livro, aluno: Aluno): boolean {
+    const dataEmprestimo = new Date();
+    const dataDevolucao = new Date();
+    const dataEntrega = new Date();
+    dataDevolucao.setDate(dataDevolucao.getDate() + 7);
+    const devolucao: Emprestimo = {
+      livro,
+      aluno,
+      dataDevolucao,
+      dataEmprestimo,
+      dataEntrega,
+    };
+    this.emprestimos.push(devolucao);
+    this.emprestimosDevolvidos();
+
+    return true;
+  }
+  adicionarDevolucao(livro: Livro): void {
+    this.livros.push(livro);
+    this.emprestimosAtrassados();
+  }
 }
+/*Tentei fazer o metodo devolição mas não funcionou. Gostaria de saber onde foi que errei */

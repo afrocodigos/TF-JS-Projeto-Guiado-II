@@ -3,4 +3,5 @@ interface Emprestimo {
   aluno: Aluno;
   dataEmprestimo: Date;
   dataDevolucao: Date;
+  dataEntrega: Date;
 }

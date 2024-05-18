@@ -2,7 +2,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     const livrosDisponiveisElement = document.getElementById("livrosDisponiveis");
     const emprestimosAtivosElement = document.getElementById("emprestimosAtivos");
-    const biblioteca = new Biblioteca(livrosDisponiveisElement, emprestimosAtivosElement);
+    const emprestimoAtrasssados = document.getElementById("emprestimosAtrassados");
+    const biblioteca = new Biblioteca(livrosDisponiveisElement, emprestimosAtivosElement, emprestimoAtrasssados);
     const livro1 = new Livro(1, "A Revolução dos Bichos", "George Orwell");
     const livro2 = new Livro(2, "O Senhor dos Anéis", "J.R.R. Tolkien");
     const livro3 = new Livro(3, "Harry Potter", "J.K. Rowling");
@@ -35,6 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const livro = (biblioteca.encontrarLivro(idLivroSelecionado) ||
             {});
         const aluno = (biblioteca.encontrarAluno(matricula) || {});
+        const atrassados = (biblioteca.emprestimosAtrassados() || {});
         biblioteca.realizarEmprestimo(livro, aluno, senha);
+        biblioteca.realizarDelucao(livro, aluno);
     });
 });
