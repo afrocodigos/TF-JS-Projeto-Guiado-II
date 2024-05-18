@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="heading">Biblioteca do Afrocódigos</h1>
+
+      <div class="card">
+        <h2 class="card-heading">Alugar Livro</h2>
+        <form id="alugarLivroForm" class="form">
+          <div class="form-control">
+            <label for="livro">Livro:</label>
+            <select id="livro" name="livro" class="select">
+              <!-- Opções de livros serão adicionadas dinamicamente aqui -->
+            </select>
+          </div>
+
+          <div class="form-control">
+            <label for="matricula">Matrícula:</label>
+            <input
+              type="text"
+              id="matricula"
+              name="matricula"
+              class="input"
+              required
+            />
+          </div>
+
+          <div class="form-control">
+            <label for="senha">Senha:</label>
+            <input
+              type="password"
+              id="senha"
+              name="senha"
+              class="input"
+              required
+            />
+          </div>
+
+          <button type="submit" class="button">Alugar Livro</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2 class="card-heading">Livros Disponíveis</h2>
+        <ul id="livrosDisponiveis" class="list">
+          <!-- Livros disponíveis serão listados dinamicamente aqui -->
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2 class="card-heading">Empréstimos Ativos</h2>
+        <ul id="emprestimosAtivos" class="list">
+          <!-- Empréstimos ativos serão listados dinamicamente aqui -->
+        </ul>
+      </div>
+    </div>
+
+    <script src="dist/index.js"></script>
+    <script src="dist/biblioteca.js"></script>
+    <script src="dist/emprestimo.js"></script>
+    <script src="dist/livro.js"></script>
+    <script src="dist/usuario.js"></script>
+    <script src="dist/aluno.js"></script>
+  </body>
+</html>
