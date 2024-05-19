@@ -1,9 +1,19 @@
-/*
+class Biblioteca {
+  livros: Livro [] = [];
+  alunos: Aluno [] = [];
+  emprestimos: Emprestimo[] = [];
+
+  constructor(
+    public livrosDisponiveisElement: HTMLUListElement,
+    public emprestimosAtivosElement: HTMLUListElement
+    ) {}
+
+  
   // --------- [Não mexer] Responsaveis por renderizar no html
 
   private renderizarLivrosDisponiveis(): void {
     this.livrosDisponiveisElement.innerHTML = "";
-    const disponiveis = this.livros.filter((livro) => livro.disponivel);
+    const disponiveis = this.livros.filter((livro) => livro.estaDisponivel);
 
     const selectLivro = document.getElementById("livro") as HTMLSelectElement;
     selectLivro.innerHTML = "";
@@ -35,4 +45,61 @@
 
   // --------- [Não mexer] Responsaveis por renderizar no html
 
-  */
+  adicionarLivro(livro: Livro): void {
+    this.livros.push(livro);
+    this.renderizarLivrosDisponiveis();
+  }
+  encontrarLivro(id: number): Livro {
+    const livroEncontrado = 
+     this.livros.find((livro) => livro.id === id) || ({} as Livro);
+    return livroEncontrado;
+
+  }
+  adicionarAluno(aluno: Aluno) {
+    this.alunos.push(aluno);
+  }
+
+  encontrarAluno(matricula: string): Aluno{
+    return this.alunos.find((aluno) => aluno.matricula === matricula) as Aluno;
+    
+  }
+
+  realizarEmprestimo(livro: Livro, aluno: Aluno, senha: string){
+    if (!aluno.matricula){
+      alert("matricula inexistente");
+      return false;
+    }
+
+    if(!senha || senha !== aluno.senha){
+      alert("senha incorreta ou inexistente!")
+      return false;
+    }
+
+    if(!livro.estaDisponivel) {
+      alert(`o livro ${livro.titulo} nao esta disponivel para emprestimo.`);
+      return false;
+    }
+
+    livro.emprestarLivro();
+
+    const dataEmprestimo = new Date();
+    const dataDevolucao = new Date();
+    dataDevolucao.setDate(dataDevolucao.getDate() + 15);
+
+    const emprestimo: Emprestimo = {
+      livro,
+      aluno, 
+      dataEmprestimo,
+      dataDevolucao,
+    };
+
+    this.emprestimos.push(emprestimo);
+    this.renderizarEmprestimosAtivos();
+    this.renderizarLivrosDisponiveis();
+
+    return true;
+  }
+}
+
+
+

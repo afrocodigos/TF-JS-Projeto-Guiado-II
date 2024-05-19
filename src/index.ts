@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
   biblioteca.adicionarLivro(livro8);
   biblioteca.adicionarLivro(livro9);
 
-  const aluno1 = new Aluno("Lisandra", "lisandra@example.com", "A28", "123");
-  const aluno2 = new Aluno("Maria", "maria@example.com", "A29", "123");
+  const aluno1 = new Aluno("Lisandra", "lisandra@example.com", "123","A28");
+  const aluno2 = new Aluno("Maria", "maria@example.com", "123", "A29" );
 
   biblioteca.adicionarAluno(aluno1);
   biblioteca.adicionarAluno(aluno2);
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ) as HTMLFormElement;
 
   alugarLivroForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+    event.preventDefault();})
 
     const idLivroSelecionado = parseInt(
       (document.getElementById("livro") as HTMLSelectElement).value
@@ -51,10 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
       .value;
     const senha = (document.getElementById("senha") as HTMLInputElement).value;
 
+  
+
     const livro = (biblioteca.encontrarLivro(idLivroSelecionado) ||
       {}) as Livro;
     const aluno = (biblioteca.encontrarAluno(matricula) || {}) as Aluno;
 
-    biblioteca.realizarEmprestimo(livro, aluno, senha);
+    //biblioteca.realizarEmprestimo(livro, aluno, senha);
   });
-});
+//});
