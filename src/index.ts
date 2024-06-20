@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
   biblioteca.adicionarLivro(livro8);
   biblioteca.adicionarLivro(livro9);
 
-  const aluno1 = new Aluno("Lisandra", "lisandra@example.com", "A28", "123");
-  const aluno2 = new Aluno("Maria", "maria@example.com", "A29", "123");
+  const aluno1 = new Aluno("Messi", "messisoli@gmail.com","123","A20");
+  const aluno2 = new Aluno("Danilo", "danilloconceicao@gmail.com","123","A30");
 
   biblioteca.adicionarAluno(aluno1);
   biblioteca.adicionarAluno(aluno2);
