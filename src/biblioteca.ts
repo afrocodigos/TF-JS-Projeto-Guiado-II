@@ -69,7 +69,7 @@ class Biblioteca{
   }
 
 
-  realizarEmprestimo(livro, aluno, senha) {
+  realizarEmprestimo(livro:Livro, aluno:Aluno, senha:string) {
     if (!aluno.matricula) {
         alert("NÃO EXISTE ESSA MATRICULA");
         return false;
@@ -95,7 +95,10 @@ class Biblioteca{
   dataDevolucao
 //
  };
+this.emprestimos.push(emprestimo);
+this.renderizarLivrosDisponiveis();
+this.renderizarLivrosDisponiveis();
 
-
+return true;
 }
 }

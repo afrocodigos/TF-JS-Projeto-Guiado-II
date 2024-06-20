@@ -46,7 +46,28 @@ class Biblioteca {
     encontrarAluno(matricula) {
         return this.alunos.find((aluno) => aluno.matricula === matricula);
     }
-    realizarEmprestimo() {
-        
+    realizarEmprestimo(livro, aluno, senha) {
+        if (!aluno.matricula) {
+            alert("NÃO EXISTE ESSA MATRICULA");
+            return false;
+        }
+        if (!senha || senha !== aluno.senha) {
+            alert("Senha incorreta pai/mãe");
+            return false;
+        }
+        if (!livro.estaDisponivel) {
+            alert("Não está disponivel ");
+            return false;
+        }
+        livro.emprestarLivro();
+        const dataEmprestimo = new Date();
+        const dataDevolucao = new Date();
+        const emprestimo = {
+            livro,
+            aluno,
+            dataEmprestimo,
+            dataDevolucao
+            //
+        };
     }
 }
